@@ -28,7 +28,15 @@ export const openaiProvider: ProviderConfig = {
     })
 
     // API key is now handled server-side before this function is called
-    const openai = new OpenAI({ apiKey: request.apiKey })
+    // const openai = new OpenAI({ apiKey: request.apiKey })
+
+    //Changing the Open AI Base URL to a custom URL from the Open AI SDK base URL.
+    const openai = new OpenAI({
+      apiKey: request.apiKey,
+      baseURL: "https://api.taam.cloud/v1", // Add this line
+      dangerouslyAllowBrowser: true,
+    })
+
 
     // Start with an empty array for all messages
     const allMessages = []
